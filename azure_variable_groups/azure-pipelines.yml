@@ -1,7 +1,26 @@
-steps:
+jobs:
+- job: build_Virginia
+  variables:
+  - group: dev_us-east-1
+  - name: job_name
+    value: 'Build us-east-1'
+  steps:
+    - script: |
+        echo $(job_name)
+        echo $REGION
+        echo $STATE_BUCKET
+        echo $INSTANCE_SIZE
+      displayName: 'Show Variable Values'
 
-- script: |
-    echo $REGION
-    echo $STATE_BUCKET
-    echo $INSTANCE_SIZE
-  displayName: 'Show Variable Values'
+- job: build_Oregon
+  variables:
+  - group: dev_us-west-2
+  - name: job_name
+    value: 'Build us-west-2'
+  steps:
+    - script: |
+        echo $(job_name)
+        echo $REGION
+        echo $STATE_BUCKET
+        echo $INSTANCE_SIZE
+      displayName: 'Show Variable Values'
